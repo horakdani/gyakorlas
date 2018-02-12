@@ -1,6 +1,6 @@
 <?php
 
-$numberOne = readline("Adj meg egy számot pozitív egész számot: ");
+$numberOne = readline("Adj meg egy pozitív egész számot: ");
 $numberTwo = readline("Adj meg egy másik pozitív egész számot: ");
 
 $i = 1;
