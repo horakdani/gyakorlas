@@ -20,7 +20,6 @@ if ($secondTimeInSec > $firstTimeInSec) {
     echo "A két időtartam közötti különbség: " . ($firstTimeInSec - $secondTimeInSec) . " másodperc";
    }
    
-   echo ".";
 
 
 
