@@ -5,46 +5,27 @@ $i = 1;
 
 echo "   |";
 
-for ($i=1; $i <= $N; $i++ ) {
-    if ($i < 10) {
-        echo "     " . $i;        
-    } else {
-        echo "    " . $i; 
-    }
-    
+for ($i = 1; $i <= $N; $i++) {
+    echo sprintf("%3s ", $i);
 }
 
 echo "\n";
 echo "---+";
 
-for ($i=1; $i <= $N; $i++ ) {
-    if ($i < 10) {
-        echo "------";
-    } else {
-        echo "-------";
-    }
-        
+for ($i = 1; $i <= $N; $i++) {
+    echo sprintf("%4s","----");
+    
 }
 
 echo "\n";
 
 for ($i = 1; $i <= $N; $i++) {
-    if ($i < 10) {
-    echo "  " . $i . "|";
-    } else {
-        echo " " . $i . "|";
-    }    
-    
-    for ($k = 1; $k <= $N; $k++) {
-        if (($i * $k) < 10) {
-        echo "     " . ($i * $k);
-        }
-        
-        if (($i * $k) >= 10) {
-        echo "    " . ($i * $k);
-        }
-        
 
+    echo sprintf("%3s", $i) . "|";
+
+
+    for ($k = 1; $k <= $N; $k++) {
+        echo sprintf("%3s ", $i * $k);
     }
     echo "\n";
 }
