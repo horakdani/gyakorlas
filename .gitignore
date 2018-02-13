@@ -1,8 +1,2 @@
 /nbproject/
-testFile.txt
-testFileTemporary.txt
-testFile1.txt
-testFile2.txt
-merge.txt
-test1.txt
-test2.txt
+*.txt
