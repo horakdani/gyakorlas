@@ -17,3 +17,4 @@ if ($argc > 2) {
 	fclose($source);
 	fclose($target);
 }
+
