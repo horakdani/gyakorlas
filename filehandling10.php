@@ -3,12 +3,11 @@
 $inputFileName = readline("Input the file name to be opened: ");
 $newLineNumbers = readline("Input the number of lines to be written: ");
 
-$fpOriginal = fopen("$inputFileName", "r") or die("can't open the file");
+$fpOriginal = fopen($inputFileName, "r") or die("can't open the file");
 $fpTemporary = fopen("testFileTemporary.txt", "w") or die("can't open the file");
 
 while (feof($fpOriginal) !== TRUE) {
-    $lines = fgets($fpOriginal);
-    fwrite($fpTemporary, $lines);
+    fwrite($fpTemporary, fgets($fpOriginal));
 }
 
 for ($i = 1; $i <= $newLineNumbers; $i++) {
@@ -18,7 +17,6 @@ for ($i = 1; $i <= $newLineNumbers; $i++) {
 
 fclose($fpOriginal);
 fclose($fpTemporary);
-
 
 unlink("testFile.txt");
 rename("testFileTemporary.txt", "testFile.txt");
