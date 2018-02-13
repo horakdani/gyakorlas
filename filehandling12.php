@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 $firstFile = readline("Input the 1st file name: ");
 $secondFile = readline("Input the 2nd file name: ");
 $newFile = readline("Input the new file name where to merge the above two files: ");
@@ -8,16 +7,26 @@ $fpFirstFile = fopen($firstFile, "r") or die("can't open the file");
 $fpSecondFile = fopen($secondFile, "r") or die("can't open the file");
 $fpNewFile = fopen($newFile, "w") or die("can't open the file");
 
-while (feof($fpFirstFile) !== TRUE) {
-    fwrite($fpNewFile, fgets($fpFirstFile));
+if ($fpFirstFile){
+    while (($line = fgets($fpFirstFile)) !== false){
+        fwrite($fpNewFile, $line);
+    }
+    if (!feof($fpFirstFile)){
+        echo "Error: unexpected fgets() fail\n";
+    }
+    fclose($fpFirstFile);
 }
 
-while (feof($fpSecondFile) !== TRUE) {
-    fwrite($fpNewFile, fgets($fpSecondFile));
+if ($fpSecondFile){
+    while (($line = fgets($fpSecondFile)) !== false){
+        fwrite($fpNewFile, $line);
+    }
+    if (!feof($fpSecondFile)){
+        echo "Error: unexpected fgets() fail\n";
+    }
+    fclose($fpSecondFile);
 }
 
-fclose($fpFirstFile);
-fclose($fpSecondFile);
 fclose($fpNewFile);
 
 echo "The content of the " . $newFile . " is:";
