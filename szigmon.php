@@ -26,8 +26,3 @@ if ($increasing){
         echo "A tömb elemei se nem növekvő, se nem csökkenő";
     }
 }
-
-
-
-
-
