@@ -2,16 +2,16 @@
 
 $num = readline("Adj meg egy számot: ");
 
-$vanoszto = FALSE;
+$vanoszto = false;
 $oszto = 2;
-while ($oszto < $num && $vanoszto !== TRUE) {
+while ($oszto < $num && $vanoszto == false) {
     if ($num % $oszto == 0) {
-        $vanoszto = TRUE;
+        $vanoszto = true;
     }
     $oszto++;
 }
 
-if ($vanoszto == TRUE) {
+if ($vanoszto == true) {
     echo "Nem prím";
 } else {
     echo "Prím";
