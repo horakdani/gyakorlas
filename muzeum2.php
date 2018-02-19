@@ -14,15 +14,15 @@ print_r($array);
         echo $array[0][$i] . "-";
     }
 
-    if ($array[0][0] = $array[1][0]){
-       $d = (substr($array[0], 2, 4) + substr($array[1], 2, 4));
-       $array[0] = $array[0][0] . " " . $d;
-        
-        
-    }
+//    if ($array[0][0] = $array[1][0]){
+//       $d = (substr($array[0], 2, 4) + substr($array[1], 2, 4));
+//       $array[0] = $array[0][0] . " " . $d;
+//        
+//        
+//    }
 
 
-print_r(array_values($array));
+//print_r(array_values($array));
 
 
 //echo substr($array[1], 2, 4);

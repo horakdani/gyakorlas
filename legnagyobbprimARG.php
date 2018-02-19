@@ -1,8 +1,21 @@
 <?php
 
-$n = $argv[1];
 $iHighest = 1;
-for ($i = 1; $i < $n; $i++) {
+
+if ($argc < 2) {
+    echo "Kérleg adj meg az argumentumban egy számot!";
+    exit(1);
+} elseif ($argc == 2 && $argv[1] == "--") {
+    $array = [];
+    while (($number = fgets(STDIN)) !== false) {
+        $array[] = $number;
+        $num = $array[0];
+    }
+} else {
+    $num = $argv[1];
+}
+
+for ($i = 1; $i < $num; $i++) {
     $vanoszto = FALSE;
     $oszto = 2;
     while ($oszto < $i && $vanoszto !== TRUE) {
@@ -15,4 +28,5 @@ for ($i = 1; $i < $n; $i++) {
         $iHighest = $i;
     }
 }
-echo "Az általad megadott számnál kisebb, legnagyobb prímszám: " . $iHighest;
+
+echo $iHighest;
