@@ -1,28 +1,30 @@
 <?php
 
-$array = array_fill(1, 7, 0);
-
-$min = $array[1];
+$day = [];
+$visitors = [];
 
 echo "Add meg a nap sorszámát és a látogatószámot\n";
 
 do {
-    fscanf(STDIN, "%d %d", $day, $visitors);
-    $array[$day] = $array[$day] + $visitors;
-} while ($visitors !== 0);
+    fscanf(STDIN, "%d %d", $d, $v);
+    array_push($day, $d);
+    array_push($visitors, $v);
+} while ($d !== 0 && $v !== 0);
 
-print_r($array);
+print_r($day);
+print_r($visitors);
 
-
-for ($i = 1; $i <= 7; $i++) {
-    if ($array[$i] < $min && $array[$i] > 0) {
-        $min = $array[$i];
+for ($i = 0; $i <= count($day); $i++){
+    for ($x = $i+1; $x <= count($day); $x++){
+        if ($day[$x] = $day[$i]){
+            $day[$i] = $visitors[$i] + $visitors[$x];
+            unset($day[$x]);
+            unset($visitors[$i]);
+            
+        }
     }
+    
 }
 
-echo "A következő napon volt a legkevesebb látogató: " . $min;
-
-
-
-
-
+print_r($day);
+print_r($visitors);
