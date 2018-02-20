@@ -1,31 +1,26 @@
 <?php
 
-$array = [];
-$day = 1;
+$array = array_fill(1, 7, 0);
+$min = $array[1];
 
-while ($day != "0 0"){
-    $day = readline("Add meg a nap sorszámát és a látogatók számát (szóközzel elválasztva): ");
-    array_push($array, $day);
-}
+
+echo "Add meg a nap sorszámát és a látogatószámot\n";
+
+do {
+    fscanf(STDIN, "%d %d", $day, $visitors);
+    $array[$day] = $array[$day] + $visitors;
+} while ($visitors !== 0);
 
 print_r($array);
 
-    for ($i = 0; $i < strlen($array[0]); $i++) {
-        echo $array[0][$i] . "-";
+for ($i = 1; $i <= 7; $i++) {
+    if ($array[$i] < $min) {
+        $min = $array[$i];
     }
+}
 
-//    if ($array[0][0] = $array[1][0]){
-//       $d = (substr($array[0], 2, 4) + substr($array[1], 2, 4));
-//       $array[0] = $array[0][0] . " " . $d;
-//        
-//        
-//    }
+echo "A következő napon volt a legkevesebb látogató: " . $min;
 
-
-//print_r(array_values($array));
-
-
-//echo substr($array[1], 2, 4);
 
 
 
