@@ -1,8 +1,8 @@
 <?php
 
 $array = array_fill(1, 7, 0);
-$min = $array[1];
 
+$min = $array[1];
 
 echo "Add meg a nap sorszámát és a látogatószámot\n";
 
@@ -13,8 +13,9 @@ do {
 
 print_r($array);
 
+
 for ($i = 1; $i <= 7; $i++) {
-    if ($array[$i] < $min) {
+    if ($array[$i] < $min && $array[$i] > 0) {
         $min = $array[$i];
     }
 }
