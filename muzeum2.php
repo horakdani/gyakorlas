@@ -2,9 +2,9 @@
 
 $day = [];
 $visitors = [];
-$dayMin = 0;
 
-echo "\nAdd meg a nap sorszámát és a látogatószámot\n\n";
+echo "\nAdd meg a nap sorszámát és a látogatószámot\n";
+echo "Ha végeztél, \"0 0\"-t írj be!\n\n";
 
 do {
     fscanf(STDIN, "%d %d", $d, $v);
@@ -15,7 +15,7 @@ do {
 for ($i = 0; $i < count($day); $i++){
     for ($x = $i+1; $x < count($day); $x++){
         if ($day[$x] == $day[$i]){
-            $visitors[$i] +=$visitors[$x];
+            $visitors[$i] += $visitors[$x];
             $visitors[$x] = 0;
         }
     }    
@@ -31,8 +31,3 @@ for ($i = 0; $i < count($visitors) - 1; $i++){
 }
 
 echo "\nA " . $dayMin . "-dik napon voltak a legkevesebben (" . $visitorsMin . " látogató).\n";
-
-//echo "Kommulált napok tömb elemei:\n";
-//print_r($day);
-//echo "kommulált látogatók tömb elemei:\n";
-//print_r($visitors);
