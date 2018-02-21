@@ -20,17 +20,20 @@ for ($rows = 0; $rows < 13; $rows++) {
         echo sprintf("%4s", $array[$p]);
         $p++;
     }
-    for ($x = $p - 15; $x < $p - 3; $x++){
+//    echo "   " . $p;
+    for ($x = $p - 15; $x < $p - 2; $x++){
         $counter = $array[$x] + $array[$x + 1] + $array[$x + 2];
-        if ($counter = 0){
+//        echo "   " . $counter;
+        if ($counter == 0){
             $counter2++;
         }
         
         
     }
     if ($counter2 > 0){
-        echo "    Van hely";
+        echo "    Ebben a sorban van 3 hely egymás mellett.";
     }
+//    echo "    " . $counter2;
     $counter = 0;
     $counter2 = 0;
     echo "\n";
