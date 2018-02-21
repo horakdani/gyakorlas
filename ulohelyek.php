@@ -1,41 +1,49 @@
 <?php
 
+echo "\n";
+
 $array = [];
 
-//$persons = readline("Add meg, hányan szeretnétek egymás mellett ülni: ");
+$persons = readline("Add meg, hányan szeretnétek egymás mellett ülni: ");
 
+echo "\n";
+
+// create an array with random elements from 1-195
 for ($i = 0; $i < 195; $i++) {
 //  array_push($array, $i);
     array_push($array, rand(0, 1));
 }
 
+// variables
 $p = 0;
-$counter = 0;
-$counter2 = 0;
+$a = 0;
+$b = 0;
 
-
+// array matrix
 for ($rows = 0; $rows < 13; $rows++) {
-
+    // display array elements
     for ($col = 0; $col < 15; $col++) {
         echo sprintf("%4s", $array[$p]);
         $p++;
     }
-//    echo "   " . $p;
-    for ($x = $p - 15; $x < $p - 2; $x++){
-        $counter = $array[$x] + $array[$x + 1] + $array[$x + 2];
-//        echo "   " . $counter;
-        if ($counter == 0){
-            $counter2++;
+    // calculaet free seats beside each other
+    for ($x = $p - 15; $x < $p - ($persons - 1); $x++) {
+        for ($y = 0; $y < $persons; $y++) {
+            $a = $a + $array[$x + $y];
         }
-        
-        
+        if ($a == 0) {
+            $b++;
+        }
+        $a = 0;
     }
-    if ($counter2 > 0){
-        echo "    Ebben a sorban van 3 hely egymás mellett.";
+    if ($b > 0) {
+        echo "    OK";
     }
-//    echo "    " . $counter2;
-    $counter = 0;
-    $counter2 = 0;
+    $b = 0;
     echo "\n";
 }
+
+echo $option = readline("\nSzeretnéd átni az ülőhelyek sorszámait? i / n");
+
+
 
