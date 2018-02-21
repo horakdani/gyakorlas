@@ -1,23 +1,22 @@
 <?php
 
-echo "\n";
-
-$array = [];
-
-$persons = readline("Add meg, hányan szeretnétek egymás mellett ülni: ");
-
-echo "\n";
-
-// create an array with random elements from 1-195
-for ($i = 0; $i < 195; $i++) {
-//  array_push($array, $i);
-    array_push($array, rand(0, 1));
-}
-
 // variables
 $p = 0;
 $a = 0;
 $b = 0;
+
+// request seat data
+echo "\n";
+$persons = readline("Add meg, hányan szeretnétek egymás mellett ülni: ");
+echo "\n";
+
+// create an array with random elements from 1-195
+$array = [];
+for ($i = 0; $i < 195; $i++) {
+    array_push($array, rand(0, 1));
+}
+
+
 
 // array matrix
 for ($rows = 0; $rows < 13; $rows++) {
@@ -43,7 +42,32 @@ for ($rows = 0; $rows < 13; $rows++) {
     echo "\n";
 }
 
-echo $option = readline("\nSzeretnéd átni az ülőhelyek sorszámait? i / n");
+
+echo "\nˇ";
+$p = 180;
+$array2 = [];
+echo $option = readline("Szeretnéd látni az ülőhelyek kiosztását? (i / n): ");
+
+if ($option = "i") {
+    for ($i = 1; $i <= 195; $i++) {
+        array_push($array2, $i);
+    }
+    echo "\n";
+    print_r($array2);
+    // display array elements
+    for ($rows = 0; $rows < 13; $rows++) {
+        // display array elements
+
+        for ($q = $p; $q < $p + 15; $q++) {
+
+            echo sprintf("%4s", $array2[$q]);
+        }
+        echo "\n";
+        $p = $p - 15;
+    }
+}
+
+
 
 
 
