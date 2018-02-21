@@ -21,10 +21,7 @@ for ($i = 0; $i < count($day); $i++){
     }    
 }
 
-echo "ÚJ Napok tömb elemei:\n";
-print_r($day);
-echo "ÚJ Látogatók tömb elemei:\n";
-print_r($visitors);
+$visitorsMin = $visitors[0];
 
 for ($i = 0; $i < count($visitors) - 1; $i++){
     if ($visitors[$i + 1] < $visitorsMin && $visitors[$i + 1] !== 0){
@@ -34,3 +31,8 @@ for ($i = 0; $i < count($visitors) - 1; $i++){
 }
 
 echo "\nA " . $dayMin . "-dik napon voltak a legkevesebben (" . $visitorsMin . " látogató).\n";
+
+//echo "Kommulált napok tömb elemei:\n";
+//print_r($day);
+//echo "kommulált látogatók tömb elemei:\n";
+//print_r($visitors);
