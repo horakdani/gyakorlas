@@ -17,7 +17,7 @@ function charReplace($str, $mit, $mire) {
     for ($i = 0; $i < strlen($str); $i++) {
         if ($str[$i] == $mit) {
             $str[$i] = $mire;
-        } 
+        }
     }
     echo "Az eredmény: " . $str . "\n";
 }
@@ -27,7 +27,7 @@ function charTurn($str, $mit, $mire) {
         if ($str[$i] == $mit) {
             $str[$i] = $mire;
         } elseif ($str[$i] == $mire) {
-            $str[$i] = $mit;            
+            $str[$i] = $mit;
         }
     }
     echo "Az eredmény: " . $str . "\n";
