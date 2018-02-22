@@ -41,9 +41,10 @@ for ($rows = 0; $rows < 13; $rows++) {
     $b = 0;
     echo "\n";
 }
+echo "\n";
 
 
-echo "\nˇ";
+
 $p = 180;
 $array2 = [];
 echo $option = readline("Szeretnéd látni az ülőhelyek kiosztását? (i / n): ");
@@ -53,7 +54,6 @@ if ($option = "i") {
         array_push($array2, $i);
     }
     echo "\n";
-    print_r($array2);
     // display array elements
     for ($rows = 0; $rows < 13; $rows++) {
         // display array elements
