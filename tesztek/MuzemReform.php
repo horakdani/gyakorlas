@@ -17,7 +17,7 @@ while (fscanf(STDIN, "%d %d", $day, $visitors) && $day != 0) {
 if (count($days) > 0) {
 	echo findMinVisitedDay($days, $visitorsOfDays);
 }
-
+//------------------functions--------------------------------
 function getIndexOfDay($days, $day) {
 	for ($i = 0; $i < count($days); $i++) {
 		if ($days[$i] == $day) {

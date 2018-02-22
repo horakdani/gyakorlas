@@ -2,12 +2,12 @@
 
 echo "Read one visit numbers:\t\t";
 
-	$out = `echo 0 0 | php MuzemReform.php`;
+	$out = `echo 0 0 | php AssocMuzemReform.php`;
 
 	printAssert($out == "");
 
 echo "\n";
-
+//---------------------------------------------------------------
 echo "Read many visit numbers:\t\t";
 
 	createTestFile([
@@ -16,14 +16,14 @@ echo "Read many visit numbers:\t\t";
 		"31 10"
 	]);
 
-	$out = `php MuzemReform.php < muzeum-test.txt`;
+	$out = `php AssocMuzemReform.php < muzeum-test.txt`;
 
 	printAssert($out == "31");
 
 	unlink("muzeum-test.txt");
 
 echo "\n";
-
+//-----------------------------------------------------------------
 echo "Read repeating visit days:\t\t";
 
 	createTestFile([
@@ -34,14 +34,14 @@ echo "Read repeating visit days:\t\t";
 		"3 100"
 	]);
 
-	$out = `php MuzemReform.php < muzeum-test.txt`;
+	$out = `php AssocMuzemReform.php < muzeum-test.txt`;
 
 	printAssert($out == "1");
 
 	unlink("muzeum-test.txt");
 
 echo "\n";
-
+//---------------functions--------------------------------------
 function printAssert($result) {
 	if ($result) {
 		echo "OK";

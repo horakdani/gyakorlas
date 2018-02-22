@@ -13,7 +13,7 @@ while (fscanf(STDIN, "%d %d", $day, $visitors) && $day != 0) {
 if (count($visitorsOfDays) > 0) {
 	echo findMinVisitedDay($visitorsOfDays);
 }
-
+//-------------------functions-------------------------------------------
 function isDayRecorded($visitorsOfDays, $day) {
 	foreach ($visitorsOfDays as $key => $value) {
 		if ($key === $day) {
