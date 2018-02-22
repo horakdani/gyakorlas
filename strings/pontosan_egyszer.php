@@ -1,9 +1,10 @@
 <?php
 
-$str = readline("Adj meg egy karakterláncot: ");
-
+echo "\n";
+$str = str_replace(" ", "", readline("Adj meg egy szöveget: "));
+echo "\n";
 onlyOne($str);
-
+echo "\n";
 //---------------function------------------
 function onlyOne($str) {
     $counter = 0;
