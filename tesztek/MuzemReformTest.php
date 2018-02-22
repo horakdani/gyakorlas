@@ -1,6 +1,6 @@
 <?php
 
-echo "Read one visit numbers:\t\t";
+echo "Read one visit numbers:\t\t\t";
 
 	$out = `echo 0 0 | php MuzemReform.php`;
 

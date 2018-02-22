@@ -24,7 +24,6 @@ function getIndexOfDay($days, $day) {
 			return $i;
 		}
 	}
-
 	return false;
 }
 
@@ -38,6 +37,5 @@ function findMinVisitedDay($days, $visitorsOfDays) {
 			$minVisitors = $visitorsOfDays[$i];
 		}
 	}
-
 	return $days[$minIndex];
 }
