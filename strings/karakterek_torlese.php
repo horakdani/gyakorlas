@@ -4,7 +4,8 @@ $str = readline("Adj meg egy szöveget: ");
 echo "\n";
 $chr = readline("Add meg a törlendő karaktert: ");
 echo "\n";
-chrDel($str, $chr);
+echo chrDel($str, $chr);
+echo "\n";
 //---------function-------------------------
 function chrDel($str, $chr) {
     for ($i = 0; $i < strlen($str); $i++) {
@@ -12,6 +13,6 @@ function chrDel($str, $chr) {
             $str = str_replace($str[$i], "", $str);
         }
     }
-    echo $str;
-    echo "\n";
+    return $str;
+   
 }
