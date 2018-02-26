@@ -12,20 +12,45 @@ while (($lines = fgets($fp)) !== false) {
     if ($lines === $date . "\n") {
         $isDate = false;
     }
-    echo $isDate;
 }
 
-fclose($fp);
+
 // Add date if it is a new day
 if ($isDate) {
     $current = file_get_contents("ugymenetek");
-    $current .= $date . "\n";
+    $current .= "\n" . $date . "\n";
     file_put_contents("ugymenetek", $current);
 } 
 
 // Add case and timestap to storage file from argument
 if ($argc === 2) {
     $current = file_get_contents("ugymenetek");
-    $current .= $argv[1] . "\t" . time() . "\n";
+    $current .= $argv[1] . " " . time() . "\n";
     file_put_contents("ugymenetek", $current);
+}
+
+//------------------------------------------------------
+$cases = [];
+fseek($fp, 0);
+while (fscanf($fp, "%s %d", $case, $timeStamp) && $case != "lezar") {
+	if (isCaseRecorded($cases, $case)) {
+		$cases[$case] += $timeStamp;
+	} else {
+		$cases[$case] = $timeStamp;
+	}
+}
+
+//------------------------------------------------------
+fclose($fp);
+
+print_r($cases);
+
+//--------------functions-------------------------------
+function isCaseRecorded($cases, $case) {
+	foreach ($cases as $key => $value) {
+		if ($key === $case) {
+			return true;
+		}
+	}
+	return false;
 }
