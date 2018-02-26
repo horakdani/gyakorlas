@@ -16,4 +16,3 @@ if ($vanoszto == true) {
 } else {
     echo "Prím";
 }
-

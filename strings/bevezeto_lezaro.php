@@ -8,7 +8,7 @@ echo "\n";
 $num = readline("Add meg a feltöltő karakter darabszámát: ");
 echo "\n";
 
-bevLez($str, $chr, $num);
+echo bevLez($str, $chr, $num);
 
 //--------------function-----------------------
 function bevLez($str, $chr, $num) {
@@ -19,6 +19,5 @@ function bevLez($str, $chr, $num) {
     }
     $strNew = $chrNum . $str . $chrNum;
     $strNew = str_replace(" ", $chr, $strNew);
-    echo $strNew;
-    echo "\n";
+    return $strNew;
 }

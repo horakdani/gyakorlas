@@ -6,7 +6,7 @@ echo "\n";
 $change = readline("Sorold fel, mely karaktereket szeretnéd kitörölni a szövegből: ");
 echo "\n";
 
-squeeze($str, $change);
+echo squeeze($str, $change);
 
 //----------------function-------------------------
 function squeeze($str, $change) {
@@ -17,5 +17,5 @@ function squeeze($str, $change) {
             }
         }
     }
-    echo $str . "\n";
+    return $str;
 }

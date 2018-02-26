@@ -4,7 +4,7 @@ echo"\n";
 $str = readline("Adj meg egy szöveget: ");
 echo "\n";
 
-myToUpper($str);
+echo myToUpper($str);
 echo "\n";
 //----------------function-------------------------------------------
 function myToUpper($str){
@@ -13,5 +13,5 @@ function myToUpper($str){
         $str = str_replace($str[$x], chr(ord($str[$x]) - 32), $str);
     }
 }
-echo $str;    
+return $str;    
 }

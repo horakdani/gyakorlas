@@ -8,9 +8,9 @@ echo "\n";
 $mire = readline("Add meg, mire szeretnéd ezt a karaktert kicserélni: ");
 echo "\n";
 
-echo charReplace($str, $mit, $mire);
+echo "Az eredmény: " .charReplace($str, $mit, $mire) . "\n";
 echo "\n";
-echo charTurn($str, $mit, $mire);
+echo "Az eredmény: " . charTurn($str, $mit, $mire) . "\n";
 
 //-----------function---------------------------------------------------------
 function charReplace($str, $mit, $mire) {
@@ -19,7 +19,7 @@ function charReplace($str, $mit, $mire) {
             $str[$i] = $mire;
         }
     }
-    echo "Az eredmény: " . $str . "\n";
+    return $str;
 }
 
 function charTurn($str, $mit, $mire) {
@@ -30,5 +30,5 @@ function charTurn($str, $mit, $mire) {
             $str[$i] = $mit;
         }
     }
-    echo "Az eredmény: " . $str . "\n";
+    return $str;
 }
