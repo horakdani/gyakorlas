@@ -6,22 +6,22 @@ $caseTimes = [];
 $summary = [];
 
 if ($argc === 2 && $argv[1] == "break") {
-    $current = file_get_contents("ugymenetek");
-    $current .= "BREAK -" . " : " . time() . "\n";
-    file_put_contents("ugymenetek", $current);
+    $fp = fopen("ugymenetek", "a");
+    fwrite($fp, $argv[1] . " " . time() . "\n");
+    fclose($fp);
 } elseif ($argc === 2 && $argv[1] == "end") {
-    $current = file_get_contents("ugymenetek");
-    $current .= "END -" . " : " . time() . "\n";
-    file_put_contents("ugymenetek", $current);
+    $fp = fopen("ugymenetek", "a");
+    fwrite($fp, $argv[1] . " " . time() . "\n");
+    fclose($fp);
 } elseif ($argc == 2 && $argv[1] !== "query") {
-    $current = file_get_contents("ugymenetek");
-    $current .= "CASE " . $argv[1] . " : " . time() . "\n";
-    file_put_contents("ugymenetek", $current);
+    $fp = fopen("ugymenetek", "a");
+    fwrite($fp, $argv[1] . " " . time() . "\n");
+    fclose($fp);
 }
-
+//----------------------------------------------------------------
 $fp = fopen("ugymenetek", "r");
 
-while (fscanf($fp, "%s %s : %d", $type, $case, $timeStamp)) {
+while (fscanf($fp, "%s %d", $case, $timeStamp)) {
     $caseNames[] = $case;
     $caseTimeStamps[] = $timeStamp;
 }
@@ -38,6 +38,7 @@ for ($x = 0; $x < count($caseNames); $x++) {
         }
     }
 }
+//----------------------------------------------------------------
 
 if ($argc === 2 && $argv[1] == "query") {
     for ($x = 0; $x < count($caseTimes); $x++) {
