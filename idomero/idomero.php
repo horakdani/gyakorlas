@@ -5,11 +5,12 @@ $caseTimeStamps = [];
 $caseTimes = [];
 $summary = [];
 
-if ($argc === 2 && $argv[1] == "break") {
+
+if ($argc == 2 && $argv[1] == "break") {
     $fp = fopen("ugymenetek", "a");
     fwrite($fp, $argv[1] . " " . time() . "\n");
     fclose($fp);
-} elseif ($argc === 2 && $argv[1] == "end") {
+} elseif ($argc == 2 && $argv[1] == "end") {
     $fp = fopen("ugymenetek", "a");
     fwrite($fp, $argv[1] . " " . time() . "\n");
     fclose($fp);
@@ -38,6 +39,8 @@ for ($x = 0; $x < count($caseNames); $x++) {
         }
     }
 }
+
+fclose($fp);
 //----------------------------------------------------------------
 
 if ($argc === 2 && $argv[1] == "query") {
@@ -49,4 +52,12 @@ if ($argc === 2 && $argv[1] == "query") {
     print_r($summary);
 }
 
-fclose($fp);
+if ($argc === 3) {
+    for ($x = 0; $x < count($caseTimes); $x++) {
+        if ($caseTimes[$x] !== 0 && $argv[2] = date("Y.m.d.", $caseTimeStamps[$x])) {
+            $summary += array($caseNames[$x] => $caseTimes[$x]);
+            echo "Megvan ";
+        }
+    }
+    print_r($summary);
+}
