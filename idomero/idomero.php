@@ -5,7 +5,6 @@ $caseTimeStamps = [];
 $caseTimes = [];
 $summary = [];
 
-
 if ($argc == 2 && $argv[1] == "break") {
     $fp = fopen("ugymenetek", "a");
     fwrite($fp, $argv[1] . " " . time() . "\n");
@@ -20,6 +19,7 @@ if ($argc == 2 && $argv[1] == "break") {
     fclose($fp);
 }
 //----------------------------------------------------------------
+
 $fp = fopen("ugymenetek", "r");
 
 while (fscanf($fp, "%s %d", $case, $timeStamp)) {
@@ -56,7 +56,6 @@ if ($argc === 3) {
     for ($x = 0; $x < count($caseTimes); $x++) {
         if ($caseTimes[$x] !== 0 && $argv[2] = date("Y.m.d.", $caseTimeStamps[$x])) {
             $summary += array($caseNames[$x] => $caseTimes[$x]);
-            echo "Megvan ";
         }
     }
     print_r($summary);
