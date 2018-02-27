@@ -1,37 +1,51 @@
 <?php
 
-$fp = fopen("ugymenetek", "r");
- 
-// Add case and timestap to storage file from argument
-if ($argc === 2) {
+$caseNames = [];
+$caseTimeStamps = [];
+$caseTimes = [];
+$summary = [];
+
+if ($argc === 2 && $argv[1] == "break") {
     $current = file_get_contents("ugymenetek");
-    $current .= $argv[1] . " " . time() . "\n";
+    $current .= "BREAK -" . " : " . time() . "\n";
+    file_put_contents("ugymenetek", $current);
+} elseif ($argc === 2 && $argv[1] == "end") {
+    $current = file_get_contents("ugymenetek");
+    $current .= "END -" . " : " . time() . "\n";
+    file_put_contents("ugymenetek", $current);
+} elseif ($argc == 2 && $argv[1] !== "query") {
+    $current = file_get_contents("ugymenetek");
+    $current .= "CASE " . $argv[1] . " : " . time() . "\n";
     file_put_contents("ugymenetek", $current);
 }
 
-//------------------------------------------------------
-$cases = [];
-fseek($fp, 0);
+$fp = fopen("ugymenetek", "r");
 
-while (fscanf($fp, "%s %d", $case, $timeStamp)) {
-    if (isCaseRecorded($cases, $case)) {
-        $cases[$case] = $timeStamp - $cases[$case];
-    } else {
-        $cases[$case] = $timeStamp;
-    } 
+while (fscanf($fp, "%s %s : %d", $type, $case, $timeStamp)) {
+    $caseNames[] = $case;
+    $caseTimeStamps[] = $timeStamp;
 }
 
-//------------------------------------------------------
-fclose($fp);
+for ($x = 0; $x < count($caseTimeStamps) - 1; $x++) {
+    $caseTimes[] = $caseTimeStamps[$x + 1] - $caseTimeStamps[$x];
+}
 
-print_r($cases);
-
-//--------------functions-------------------------------
-function isCaseRecorded($cases, $case) {
-    foreach ($cases as $key => $value) {
-        if ($key === $case) {
-            return true;
+for ($x = 0; $x < count($caseNames); $x++) {
+    for ($y = $x + 1; $y < count($caseNames) - 1; $y++) {
+        if ($caseNames[$x] === $caseNames[$y]) {
+            $caseTimes[$x] += $caseTimes[$y];
+            $caseTimes[$y] = 0;
         }
     }
-    return false;
 }
+
+if ($argc === 2 && $argv[1] == "query") {
+    for ($x = 0; $x < count($caseTimes); $x++) {
+        if ($caseTimes[$x] !== 0 && $caseNames[$x] !== "end") {
+            $summary += array($caseNames[$x] => $caseTimes[$x]);
+        }
+    }
+    print_r($summary);
+}
+
+fclose($fp);
