@@ -31,7 +31,7 @@ echo "\n";
 echo "\n";
 $search = readline("Válassz ki egy elemet a rendezett tömbből: ");
 
-echo "\nA keresett elem a ". searchElement($search, $array) . "-dik indexű helyen áll a tömbben.\n";
+echo "\nA keresett elem a " . searchElement($search, $array) . "-dik indexű helyen áll a tömbben.\n";
 
 function searchElement($search, $array) {
     $min = 0;

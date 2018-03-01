@@ -1,24 +1,16 @@
 <?php
 
-//Írj programot, mely kiírja a képernyőre az első n Fibonacci számot.
-//Az n változó értékét a felhasználó adhassa meg! Írd meg rekurzívan és iteratívan is!
+$num = readline("Add meg hanyadik Fibonacci szam erdekel: ");
 
-echo "\n";
-$n = readline("Add meg, hányadik számjegyig listázzam a Fibonacci sorozatot: ");
-echo "\n";
 
-echo Fibonacci($n);
+for ($x = 1; $x <= $num; $x++){
+    echo Fibonacci($x) . " ";
+}
 
-function Fibonacci($n, $i) {
-    $x = 1;
-    $y = 1;
-  
-    if ($n == $i) {
-        return;
+function Fibonacci($num) {
+    if ($num <= 1) {
+        return $num;
     } else {
-        $x = $y;
-        $y = $z;
-        $n = $x + $y;
-        return $n[$i] . Fibonacci($i+1);
+        return Fibonacci($num - 1) + Fibonacci($num - 2) ;
     }
 }
