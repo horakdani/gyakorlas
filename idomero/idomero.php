@@ -51,12 +51,3 @@ if ($argc === 2 && $argv[1] == "query") {
     }
     print_r($summary);
 }
-
-if ($argc === 3) {
-    for ($x = 0; $x < count($caseTimes); $x++) {
-        if ($caseTimes[$x] !== 0 && $argv[2] = date("Y.m.d.", $caseTimeStamps[$x])) {
-            $summary += array($caseNames[$x] => $caseTimes[$x]);
-        }
-    }
-    print_r($summary);
-}
