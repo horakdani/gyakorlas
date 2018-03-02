@@ -16,20 +16,26 @@ for ($i = 0; $i < rand(50, 100); $i++) {
     $kartya[$rand2] = $temp;
 }
 
-sort($kartya);
+//sort($kartya);
+//print_r($kartya);
 
-for ($i = 0; $i < 4; $i++) {
-    if ($kartya[$i]["szin"] == $i) {
-        echo "oke";
-    } else {
-        die("hiányos");
-    }
-    for ($j = 3; $j <= 14; $j++) {
-        if ($kartya[$i]["szam"] == $j) {
-            echo "OK";
+
+
+for ($k = 0; $k < count($kartya); $k += 13) {
+    for ($i = $k; $i < $k + 12; $i++) {
+        if ($kartya[$i]["szin"] == $kartya[$i + 1]["szin"]) {
+            continue;
         } else {
-            die("HIANYOS");
+            die("hiányos ");
+        }
+        if ($kartya[$i]["szam"] == $kartya[$i + 1]["szam"] - 1) {
+            continue;
+        } else {
+            $teljes = false;
+            die("HIANYOS ");
         }
     }
 }
+
+echo "A pakli TELJES.";
 
