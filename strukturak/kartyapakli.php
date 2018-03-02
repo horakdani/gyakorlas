@@ -18,21 +18,23 @@ for ($i = 0; $i < rand(50, 100); $i++) {
 
 sort($kartya);
 
+//foreach ($kartya as $kartya) {
+//    echo $kartya["szin"] . " " . $kartya["szam"] . "\n"; 
+//}
+
 for ($k = 0; $k < count($kartya); $k += 13) {
     for ($i = $k; $i < $k + 12; $i++) {
         if ($kartya[$i]["szin"] == $kartya[$i + 1]["szin"]) {
             continue;
         } else {
-            die("A pakli HIÁNYOS.");
+            die("\nA pakli HIÁNYOS.\n");
         }
         if ($kartya[$i]["szam"] == $kartya[$i + 1]["szam"] - 1) {
             continue;
         } else {
-            $teljes = false;
-            die("A pakli HIÁNYOS.");
+            die("\nA pakli HIÁNYOS.\n");
         }
     }
 }
 
-echo "A pakli TELJES.";
-
+echo "\nA pakli TELJES.\n";
