@@ -16,23 +16,20 @@ for ($i = 0; $i < rand(50, 100); $i++) {
     $kartya[$rand2] = $temp;
 }
 
-//sort($kartya);
-//print_r($kartya);
-
-
+sort($kartya);
 
 for ($k = 0; $k < count($kartya); $k += 13) {
     for ($i = $k; $i < $k + 12; $i++) {
         if ($kartya[$i]["szin"] == $kartya[$i + 1]["szin"]) {
             continue;
         } else {
-            die("hiányos ");
+            die("A pakli HIÁNYOS.");
         }
         if ($kartya[$i]["szam"] == $kartya[$i + 1]["szam"] - 1) {
             continue;
         } else {
             $teljes = false;
-            die("HIANYOS ");
+            die("A pakli HIÁNYOS.");
         }
     }
 }
