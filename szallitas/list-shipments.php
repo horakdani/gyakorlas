@@ -1,8 +1,9 @@
 <?php
-
+// tömbök deffiniálása
 $segedTomb = [];
 $szallitasok = [];
 
+// adatok kiolvasása fájlból
 $fp = fopen("szallitasok", "r");
 
 while (($lines = fgets($fp)) !== false) {
@@ -11,8 +12,7 @@ while (($lines = fgets($fp)) !== false) {
 
 fclose($fp);
 
-//print_r($segedTomb);
-
+// szállítások tömb feltöltése
 for ($x = 0; $x < count($segedTomb); $x += 7) {
     $szallitasok[] = ["honnan" => $segedTomb[$x],
         "felMikor" => strtotime($segedTomb[$x + 1]),
@@ -24,12 +24,9 @@ for ($x = 0; $x < count($segedTomb); $x += 7) {
     ];
 }
 
-//print_r($szallitasok);
-//-----------------------------------------------
-
+// display results
 for ($x = 0; $x < count($szallitasok); $x++){
     echo trim($szallitasok[$x]["honnan"]) . " -> " . trim($szallitasok[$x]["hova"]) . " w\\ " . trim($szallitasok[$x]["rendszam"]) . "\n";
     echo "@" . trim($szallitasok[$x]["honnan"]) . " " . trim(date("Y.m.d H:i", $szallitasok[$x]["felMikor"])) . " - " . trim(date("Y.m.d H:i", $szallitasok[$x]["felMikor"] + $szallitasok[$x]["felIdo"])) . "\n";
     echo "@" . trim($szallitasok[$x]["hova"]) . " " . trim(date("Y.m.d H:i", $szallitasok[$x]["leMikor"])) . " - " . trim(date("Y.m.d H:i", $szallitasok[$x]["leMikor"] + $szallitasok[$x]["leIdo"])) . "\n\n";
 }
-
