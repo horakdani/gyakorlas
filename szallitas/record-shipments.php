@@ -46,7 +46,7 @@ for ($x = 0; $x < count($segedTomb); $x += 7) {
 //időpontok ellenőrzése
 for ($x = 0; $x < count($szallitasok); $x++) {
     if (strtotime($felMikor) + ($felIdo * 60) >= $szallitasok[$x]["felMikor"] && strtotime($felMikor) <= $szallitasok[$x]["felMikor"] + $szallitasok[$x]["felIdo"]) {
-        echo strtoupper("A megadott lerakodási időpont egybeesik egy már rögzített időponttal!\n\n");
+        echo strtoupper("A megadott felrakodási időpont egybeesik egy már rögzített időponttal!\n\n");
         $le = readline("Visszavonja a szállítás rögzítését? (i/n): ");
         if ($le == "i") {
             die(strtoupper("\nA szállítás visszavonva!\n"));
