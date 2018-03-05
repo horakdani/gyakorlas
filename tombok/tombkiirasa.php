@@ -9,8 +9,7 @@ echo "A tömb: " . json_encode($array) . "\n\n";
 
 echo "A tömb elemei: ";
 foreach ($array as $value) {
-    echo $value . ", ";
-    
+    echo $value . ", "; 
 }
 echo "\n";
 

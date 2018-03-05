@@ -17,8 +17,9 @@ function sorter($array, $i, $j) {
             $array[$i] = $array[$i + $j];
             $array[$i + $j] = $temp;
             return sorter($array, $i + 1, $j);
-        } else {
-            return sorter($array, $i, $j + 1);
-        }
-        return;
-    }
+        } 
+            
+        } 
+        
+     
+ 
