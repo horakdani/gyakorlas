@@ -38,3 +38,21 @@ for ($k = 0; $k < count($kartya); $k += 13) {
 }
 
 echo "\nA pakli TELJES.\n";
+
+// Gyuri része:
+if (doubleCard($kartya)) {
+    echo "\nVan olyan lap a pakliban, ami kétszer fordul elő\n";
+} else {
+    echo "\nA pakliban nincs kétszer ugyaza a lap.\n";
+}
+
+function doubleCard($kartya, $i = 0) {
+    if ($i < count($kartya) - 1) {
+        if ($kartya[$i] != $kartya[$i + 1]) {
+            return doubleCard($kartya, $i + 1);
+        } else {
+            return true;
+        }
+    }
+    return false;
+}
