@@ -17,7 +17,6 @@ echo "\n";
 $rendszam = readline("Add meg a szállító jármű rendszámát (pl.: KDU-654): ");
 echo "\n";
 
-// rakodási időpontok ellenőrzése
 // tömbök deffiniálása
 $segedTomb = [];
 $szallitasok = [];
@@ -66,6 +65,7 @@ for ($x = 0; $x < count($szallitasok); $x++) {
     }
 }
 
+// fájl feltöltése adatokkal
 $fp = fopen("szallitasok", "a");
 fwrite($fp, "$honnan\n");
 fwrite($fp, "$felMikor\n");
