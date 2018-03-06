@@ -71,7 +71,6 @@ for ($x = 0; $x < count($szallitasok); $x++) {
 }
 
 //collisions($felMikor, $felIdo, $leMikor, $leIdo, $szallitasok);
-
 // fájl feltöltése adatokkal
 $fp = fopen("szallitasok", "a");
 fwrite($fp, "$honnan\n");
@@ -132,4 +131,3 @@ fclose($fp);
 //        "plateNumber" => fgets($fp)
 //    ];
 //}
- 

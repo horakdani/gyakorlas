@@ -3,6 +3,7 @@
 // tömbök deffiniálása
 $segedTomb = [];
 $szallitasok = [];
+$keresett = [];
 
 // adatok kiolvasása fájlból
 $fp = fopen("szallitasok", "r");
@@ -13,9 +14,10 @@ while (($lines = fgets($fp)) !== false) {
 
 fclose($fp);
 
-// szállítások tömb feltöltése
+// "$szállítások" tömb feltöltése
 for ($x = 0; $x < count($segedTomb); $x += 7) {
-    $szallitasok[] = ["honnan" => $segedTomb[$x],
+    $szallitasok[] = [
+        "honnan" => $segedTomb[$x],
         "felMikor" => strtotime($segedTomb[$x + 1]),
         "felIdo" => $segedTomb[$x + 2] * 60,
         "hova" => $segedTomb[$x + 3],
@@ -24,13 +26,49 @@ for ($x = 0; $x < count($segedTomb); $x += 7) {
         "rendszam" => $segedTomb[$x + 6]
     ];
 }
-//------------------------------------------------------------------------------
+
+// "$keresett" segédtömb feltöltése
 for ($x = 0; $x < count($szallitasok); $x++) {
     if ($argv[1] == $szallitasok[$x]["honnan"]) {
-        echo "OUT > " . $szallitasok[$x]["hova"] . " @" . trim(date("Y.m.d H:i", $szallitasok[$x]["felMikor"])) . " - " . trim(date("Y.m.d H:i", $szallitasok[$x]["felMikor"] + $szallitasok[$x]["felIdo"])) . " w\\ " . $szallitasok[$x]["rendszam"] . "\n";
+        $keresett[$x] = [
+            "honnan" => $szallitasok[$x]["honnan"],
+            "mikor" => $szallitasok[$x]["felMikor"],
+            "ido" => $szallitasok[$x]["felIdo"],
+            "hova" => $szallitasok[$x]["hova"],
+            "rendszam" => $szallitasok[$x]["rendszam"]
+        ];
     }
     if ($argv[1] == $szallitasok[$x]["hova"]) {
-        echo "IN < " . $szallitasok[$x]["honnan"] . " @" . trim(date("Y.m.d H:i", $szallitasok[$x]["leMikor"])) . " - " . trim(date("Y.m.d H:i", $szallitasok[$x]["leMikor"] + $szallitasok[$x]["leIdo"])) . " w\\ " . $szallitasok[$x]["rendszam"];
+        $keresett[$x] = [
+            "honnan" => $szallitasok[$x]["honnan"],
+            "mikor" => $szallitasok[$x]["leMikor"],
+            "ido" => $szallitasok[$x]["leIdo"],
+            "hova" => $szallitasok[$x]["hova"],
+            "rendszam" => $szallitasok[$x]["rendszam"]
+        ];
+    } else {
+        continue;
+    }
+}
+// "$keresett" segédtömb időszerinti sorbaállítása
+for ($x = 0; $x < count($keresett) - 1; $x++) {
+    $temp = 0;
+    if ($keresett[$x + 1]["mikor"] < $keresett[$x]["mikor"]) {
+        $temp = $keresett[$x];
+        $keresett[$x] = $keresett[$x + 1];
+        $keresett[$x + 1] = $temp;
+    } else {
+        continue;
+    }
+}
+
+// lekérdezés kilistázása
+for ($x = 0; $x < count($szallitasok) - 1; $x++) {
+    if ($argv[1] == $keresett[$x]["honnan"]) {
+        echo "OUT > " . $keresett[$x]["hova"] . " @" . trim(date("Y.m.d H:i", $keresett[$x]["mikor"])) . " - " . trim(date("Y.m.d H:i", $keresett[$x]["mikor"] + $keresett[$x]["ido"])) . " w\\ " . $keresett[$x]["rendszam"] . "\n";
+    }
+    if ($argv[1] == $keresett[$x]["hova"]) {
+        echo "IN < " . $keresett[$x]["honnan"] . " @" . trim(date("Y.m.d H:i", $keresett[$x]["mikor"])) . " - " . trim(date("Y.m.d H:i", $keresett[$x]["mikor"] + $keresett[$x]["ido"])) . " w\\ " . $keresett[$x]["rendszam"] . "\n";
     } else {
         continue;
     }
