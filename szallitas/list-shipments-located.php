@@ -1,8 +1,5 @@
 <?php
 
-//$query = readline("Add meg a lekérdezendő végpont nevét: ");
-
-//------------------------------------------------------------------------------
 // tömbök deffiniálása
 $segedTomb = [];
 $szallitasok = [];
