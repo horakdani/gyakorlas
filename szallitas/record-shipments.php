@@ -83,7 +83,7 @@ fwrite($fp, "$leIdo\n");
 fwrite($fp, "$rendszam\n");
 fclose($fp);
 
-//----------------function------------------------------------------------------
+//------------------------------ function --------------------------------------
 //function collisions($felMikor, $felIdo, $leMikor, $leIdo, $szallitasok) {
 //    for ($x = 0; $x < count($szallitasok); $x++) {
 //        if ((strtotime($felMikor) + ($felIdo * 60) >= $szallitasok[$x]["felMikor"] &&
@@ -105,7 +105,7 @@ fclose($fp);
 //    }
 //}
 
-//------------------------------------------------------------------------------
+//--------------- Zsolt megoldása a tömb feltöltésére --------------------------
 //$shipments = [];
 //
 //
@@ -132,5 +132,4 @@ fclose($fp);
 //        "plateNumber" => fgets($fp)
 //    ];
 //}
-//------------------------------------------------------------------------------
  
