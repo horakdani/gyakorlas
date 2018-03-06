@@ -1,7 +1,6 @@
 <?php
 
-echo "\n";
-$query = readline("Add meg a lekérdezendő végpont nevét: ");
+//$query = readline("Add meg a lekérdezendő végpont nevét: ");
 
 //------------------------------------------------------------------------------
 // tömbök deffiniálása
@@ -29,12 +28,11 @@ for ($x = 0; $x < count($segedTomb); $x += 7) {
     ];
 }
 //------------------------------------------------------------------------------
-
 for ($x = 0; $x < count($szallitasok); $x++) {
-    if ($query == $szallitasok[$x]["honnan"]) {
+    if ($argv[1] == $szallitasok[$x]["honnan"]) {
         echo "OUT > " . $szallitasok[$x]["hova"] . " @" . trim(date("Y.m.d H:i", $szallitasok[$x]["felMikor"])) . " - " . trim(date("Y.m.d H:i", $szallitasok[$x]["felMikor"] + $szallitasok[$x]["felIdo"])) . " w\\ " . $szallitasok[$x]["rendszam"] . "\n";
     }
-    if ($query == $szallitasok[$x]["hova"]) {
+    if ($argv[1] == $szallitasok[$x]["hova"]) {
         echo "IN < " . $szallitasok[$x]["honnan"] . " @" . trim(date("Y.m.d H:i", $szallitasok[$x]["leMikor"])) . " - " . trim(date("Y.m.d H:i", $szallitasok[$x]["leMikor"] + $szallitasok[$x]["leIdo"])) . " w\\ " . $szallitasok[$x]["rendszam"];
     } else {
         continue;

@@ -24,12 +24,12 @@ Hatchworks
 45
 HJT-941");
 
+$out = `php list-shipments-located.php "Acme Co."`;
+
 $expectedOut = 'OUT > Smith Facility @2018.03.14 18:30 - 2018.03.14 19:00 w\ KDU-654
 IN < Golden Road Electronics @2018.03.13 12:30 - 2018.03.13 13:10 w\ FES-442';
 
-$out = trim(`php list-shipments-located.php "Acme Co."`);
-
-echo ($out == $expectedOut ? "OK" : "FAIL") . "\n";
+echo (trim($out) == $expectedOut ? "OK" : "FAIL") . "\n";
 
 function recordShipment($shipment) {
 	file_put_contents("test", $shipment);

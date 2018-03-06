@@ -41,7 +41,7 @@ $out = trim(`php list-shipments.php`);
 echo ($out == $expectedOut ? "OK" : "FAIL") . "\n";
 
 function recordShipment($shipment) {
-	file_put_contents("test", $shipment, FILE_APPEND);
+	file_put_contents("test", $shipment);
 	`php record-shipment.php < test`;
 	unlink("test");
 }
