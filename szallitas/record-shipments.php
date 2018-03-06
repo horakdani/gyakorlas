@@ -42,20 +42,53 @@ for ($x = 0; $x < count($segedTomb); $x += 7) {
     ];
 }
 
+//$shipments = [];
+//
+//
+//while(($shipment = readShipment($fp)) != false){
+//    $shipments[] = $shipment;
+//}
+//
+//
+//function readShipment($fp) {
+//    $packname = fgets($fp);
+//    if($packname === false){
+//        return false;
+//    }
+//
+//    return [
+//        "packName" => $packname,
+//        "packDate" => fgets($fp),
+//        "packDuration" => (int) fgets($fp) * 60,
+//
+//        "lognName" => fgets($fp),
+//        "lognDate" => fgets($fp),
+//        "lognDuration" => (int) fgets($fp) * 60,
+//
+//        "plateNumber" => fgets($fp)
+//    ];
+//}
+
 //időpontok ellenőrzése
 for ($x = 0; $x < count($szallitasok); $x++) {
-    if (strtotime($felMikor) + ($felIdo * 60) >= $szallitasok[$x]["felMikor"] && strtotime($felMikor) <= $szallitasok[$x]["felMikor"] + $szallitasok[$x]["felIdo"]) {
-        echo strtoupper("A megadott felrakodási időpont egybeesik egy már rögzített időponttal!\n\n");
+    if (strtotime($felMikor) + ($felIdo * 60) >= $szallitasok[$x]["felMikor"] &&
+            strtotime($felMikor) <= $szallitasok[$x]["felMikor"] + $szallitasok[$x]["felIdo"] &&
+            $szallitasok[$x]["felMikor"] >= strtotime($felMikor) &&
+            $szallitasok[$x]["felMikor"] <= strtotime($felMikor) + ($felIdo * 60)) {
+        echo strtoupper("A megadott FELrakodási időpont egybeesik egy már rögzített időponttal!\n\n");
         $le = readline("Visszavonja a szállítás rögzítését? (i/n): ");
         if ($le == "i") {
             die(strtoupper("\nA szállítás visszavonva!\n"));
         } else {
             continue;
         }
-    }    
-    
-    if (strtotime($leMikor) + ($leIdo * 60) >= $szallitasok[$x]["leMikor"] && strtotime($leMikor) <= $szallitasok[$x]["leMikor"] + $szallitasok[$x]["leIdo"]) {
-        echo strtoupper("A megadott lerakodási időpont egybeesik egy már rögzített időponttal!\n\n");
+    }
+
+    if (strtotime($leMikor) + ($leIdo * 60) >= $szallitasok[$x]["leMikor"] &&
+            strtotime($leMikor) <= $szallitasok[$x]["leMikor"] + $szallitasok[$x]["leIdo"] &&
+            $szallitasok[$x]["leMikor"] >= strtotime($leMikor) &&
+            $szallitasok[$x]["leMikor"] <= strtotime($leMikor) + ($leIdo * 60)) {
+        echo strtoupper("A megadott LErakodási időpont egybeesik egy már rögzített időponttal!\n\n");
         $le = readline("Visszavonja a szállítás rögzítését? (i/n): ");
         if ($le == "i") {
             die(strtoupper("\nA szállítás visszavonva!\n"));
@@ -75,4 +108,3 @@ fwrite($fp, "$leMikor\n");
 fwrite($fp, "$leIdo\n");
 fwrite($fp, "$rendszam\n");
 fclose($fp);
-
