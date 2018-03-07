@@ -1,8 +1,14 @@
 <?php
 
 // tömbök deffiniálása
-$index = [];
 $szallitasok = [];
+$index = [];
+$index2 = [];
+
+// véltozók deffiniálása
+$opposite = "";
+$time = "";
+$plate = "";
 
 // adatok kiolvasása fájlból, "$index" feltöltése
 $fp = fopen("szallitasok", "r");
@@ -26,9 +32,10 @@ for ($x = 0; $x < count($index); $x += 7) {
     ];
 }
 
+// "$index" segédtömb feltöltése
 unset($index);
 $index = [];
-// "$index" segédtömb feltöltése
+
 for ($x = 0; $x < count($szallitasok); $x++) {
     if ($argv[1] == $szallitasok[$x]["honnan"]) {
         $index[] = [
@@ -47,29 +54,78 @@ for ($x = 0; $x < count($szallitasok); $x++) {
             "hova" => $szallitasok[$x]["hova"],
             "rendszam" => $szallitasok[$x]["rendszam"]
         ];
-    } 
+    }
+}
+//print_r($index);
+
+// paraméterek vizsgálata, deffiniálása
+for ($x = 0; $x < count($argv); $x++) {
+    if (substr($argv[$x], 0, 9) == "opposite=") {
+        $opposite = substr($argv[$x], 9);
+    }
+    if (substr($argv[$x], 0, 5) == "time=") {
+        $time = strtotime(substr($argv[$x], 5));
+    }
+    if (substr($argv[$x], 0, 6) == "plate=") {
+        $plate = substr($argv[$x], 6);
+    }
 }
 
-// "$index" segédtömb időszerinti sorbaállítása
-for ($x = 0; $x < count($index) - 1; $x++) {
-    for ($y = $x + 1; $y < count($index); $y++) {
+// "$index2" segédtömb feltöltése
+for ($x = 0; $x < count($index); $x++) {
+    if (    
+            $argv[1] == $index[$x]["honnan"] &&
+            $opposite == $index[$x]["hova"] &&
+            $time >= $index[$x]["mikor"] &&
+            $time <= $index[$x]["mikor"] + $index[$x]["ido"] &&
+            $plate == $index[$x]["rendszam"]
+    ) {
+        $index2[] = [
+            "honnan" => $index[$x]["honnan"],
+            "mikor" => $index[$x]["mikor"],
+            "ido" => $index[$x]["ido"],
+            "hova" => $index[$x]["hova"],
+            "rendszam" => $index[$x]["rendszam"]
+        ];
+    }
+    if (
+            $argv[1] == $index[$x]["hova"] &&
+            $opposite == $index[$x]["honnan"] &&
+            $time >= $index[$x]["mikor"] &&
+            $time <= $index[$x]["mikor"] + $index[$x]["ido"] &&
+            $plate == $index[$x]["rendszam"]
+    ) {
+        $index2[] = [
+            "honnan" => $index[$x]["honnan"],
+            "mikor" => $index[$x]["mikor"],
+            "ido" => $index[$x]["ido"],
+            "hova" => $index[$x]["hova"],
+            "rendszam" => $index[$x]["rendszam"]
+        ];
+    }
+}
+print_r($index2);
+//------------------------------------------------------------------------------
+// "$index2" segédtömb időszerinti sorbaállítása
+for ($x = 0; $x < count($index2) - 1; $x++) {
+    for ($y = $x + 1; $y < count($index2); $y++) {
         $temp = "";
-        if ($index[$y]["mikor"] < $index[$x]["mikor"]) {
-            $temp = $index[$x];
-            $index[$x] = $index[$y];
-            $index[$y] = $temp;
+        if ($index2[$y]["mikor"] < $index2[$x]["mikor"]) {
+            $temp = $index2[$x];
+            $index2[$x] = $index2[$y];
+            $index2[$y] = $temp;
         } else {
             continue;
         }
     }
 }
 // lekérdezés kilistázása
-for ($x = 0; $x < count($index); $x++) {
-    if ($argv[1] == $index[$x]["honnan"]) {
-        echo "OUT > " . $index[$x]["hova"] . " @" . trim(date("Y.m.d H:i", $index[$x]["mikor"])) . " - " . trim(date("Y.m.d H:i", $index[$x]["mikor"] + $index[$x]["ido"])) . " w\\ " . $index[$x]["rendszam"] . "\n";
+for ($x = 0; $x < count($index2); $x++) {
+    if ($argv[1] == $index2[$x]["honnan"]) {
+        echo "OUT > " . $index2[$x]["hova"] . " @" . trim(date("Y.m.d H:i", $index2[$x]["mikor"])) . " - " . trim(date("Y.m.d H:i", $index2[$x]["mikor"] + $index2[$x]["ido"])) . " w\\ " . $index2[$x]["rendszam"] . "\n";
     }
-    if ($argv[1] == $index[$x]["hova"]) {
-        echo "IN < " . $index[$x]["honnan"] . " @" . trim(date("Y.m.d H:i", $index[$x]["mikor"])) . " - " . trim(date("Y.m.d H:i", $index[$x]["mikor"] + $index[$x]["ido"])) . " w\\ " . $index[$x]["rendszam"] . "\n";
+    if ($argv[1] == $index2[$x]["hova"]) {
+        echo "IN < " . $index2[$x]["honnan"] . " @" . trim(date("Y.m.d H:i", $index2[$x]["mikor"])) . " - " . trim(date("Y.m.d H:i", $index2[$x]["mikor"] + $index2[$x]["ido"])) . " w\\ " . $index2[$x]["rendszam"] . "\n";
     } else {
         continue;
     }
