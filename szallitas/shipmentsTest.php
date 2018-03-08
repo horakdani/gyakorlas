@@ -40,6 +40,8 @@ $out = trim(`php list-shipments.php`);
 
 echo ($out == $expectedOut ? "OK" : "FAIL") . "\n";
 
+unlink("szallitasok");
+
 function recordShipment($shipment) {
 	file_put_contents("test", $shipment);
 	`php record-shipment.php < test`;

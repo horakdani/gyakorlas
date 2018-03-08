@@ -31,6 +31,8 @@ IN < Golden Road Electronics @2018.03.13 12:30 - 2018.03.13 13:10 w\ FES-442';
 
 echo (trim($out) == $expectedOut ? "OK" : "FAIL") . "\n";
 
+unlink("szallitasok");
+
 function recordShipment($shipment) {
 	file_put_contents("test", $shipment);
 	`php record-shipment.php < test`;

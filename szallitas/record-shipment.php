@@ -1,5 +1,4 @@
 <?php
-
 // adatok bekérése
 echo "\n";
 $honnan = readline("Add meg a szállítás kiinduló pontjának nevét (pl.: Acme Co.): ");
@@ -16,20 +15,15 @@ $leIdo = readline("Add meg a lerakodás idejét percben (pl.: 20): ");
 echo "\n";
 $rendszam = readline("Add meg a szállító jármű rendszámát (pl.: KDU-654): ");
 echo "\n";
-
 // tömbök deffiniálása
 $segedTomb = [];
 $szallitasok = [];
-
 // adatok kiolvasása fájlból
 $fp = fopen("szallitasok", "r");
-
 while (($lines = fgets($fp)) !== false) {
     $segedTomb[] = trim($lines);
 }
-
 fclose($fp);
-
 // szállítások tömb feltöltése
 for ($x = 0; $x < count($segedTomb); $x += 7) {
     $szallitasok[] = ["honnan" => $segedTomb[$x],
@@ -41,7 +35,6 @@ for ($x = 0; $x < count($segedTomb); $x += 7) {
         "rendszam" => $segedTomb[$x + 6]
     ];
 }
-
 //időpontok ellenőrzése
 for ($x = 0; $x < count($szallitasok); $x++) {
     if (strtotime($felMikor) + ($felIdo * 60) >= $szallitasok[$x]["felMikor"] &&
@@ -69,7 +62,6 @@ for ($x = 0; $x < count($szallitasok); $x++) {
         }
     }
 }
-
 //collisions($felMikor, $felIdo, $leMikor, $leIdo, $szallitasok);
 // fájl feltöltése adatokkal
 $fp = fopen("szallitasok", "a");
@@ -81,7 +73,6 @@ fwrite($fp, "$leMikor\n");
 fwrite($fp, "$leIdo\n");
 fwrite($fp, "$rendszam\n");
 fclose($fp);
-
 //------------------------------ function --------------------------------------
 //function collisions($felMikor, $felIdo, $leMikor, $leIdo, $szallitasok) {
 //    for ($x = 0; $x < count($szallitasok); $x++) {
@@ -103,7 +94,6 @@ fclose($fp);
 //        }
 //    }
 //}
-
 //--------------- Zsolt megoldása a tömb feltöltésére --------------------------
 //$shipments = [];
 //
