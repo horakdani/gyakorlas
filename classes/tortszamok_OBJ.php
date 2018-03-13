@@ -1,7 +1,7 @@
 <?php
 
 $number1 = new Rational(5, 9);
-$number2 = new Rational(3, 11);
+$number2 = new Rational(10, 18);
 
 echo "\n";
 echo "----------------------------------------------\n";
@@ -49,7 +49,7 @@ class Rational {
     }
 
     public function isEqual($number) {
-        if ($this->numerator / $this->denominator === $number->numerator / $number->denominator) {
+        if ($this->numerator * $number->denominator === $this->denominator * $number->numerator) {
             return "egyenlő";
         } else {
             return "nem egyenlő";
@@ -59,4 +59,5 @@ class Rational {
     public function toString() {
         return $this->numerator . "/" . $this->denominator;
     }
+
 }
