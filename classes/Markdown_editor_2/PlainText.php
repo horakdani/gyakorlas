@@ -2,18 +2,18 @@
 
 class PlainText {
 
-	protected $text;
+    protected $text;
 
-	public function __construct($text) {
-		$this->text = $text;
-	}
+    public function __construct($text) {
+        $this->text = $text;
+    }
 
-	public function toMarkdown() {
-		return $this->text;
-	}
+    public function toMarkdown() {
+        return $this->text;
+    }
 
-	public function toHtml() {
-		return "<p>" . $this->text . "</p>";
-	}
+    public function toHtml() {
+        return "<p>" . $this->text . "</p>";
+    }
 
 }

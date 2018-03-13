@@ -1,15 +1,13 @@
 <?php
 
-class Header extends PlainText {
-
-//    private $text;
-
-//    public function __construct($text) {
-//        $this->text = $text;
-//    }
+class HeaderText extends CompositeText {
 
     public function toMarkdown() {
-        return "#" . $this->text . "#" . "\n";
+        return "#" . $this->texts . "#" . "\n";
+    }
+    
+      public function toHTML() {
+        return "<h1>" . $this->texts . "</h1>";
     }
 
 }

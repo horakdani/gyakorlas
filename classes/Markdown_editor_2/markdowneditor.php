@@ -16,8 +16,8 @@ $proba->add(new ItalicsText("Ipsum"));
 $proba->add(new UnderscoreText("dolor"));
 $proba->add(new StrikeTroughText("sit amet"));
 
-echo "\n";
+echo "__________________________________________________________________________________________\n";
 echo $proba->toMarkdown() . "\n";
-echo "\n";
+echo "__________________________________________________________________________________________\n";
 echo $proba->toHtml();
-echo "\n";
+echo "\n__________________________________________________________________________________________\n";

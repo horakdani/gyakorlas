@@ -10,7 +10,6 @@ $set2 = new Set($array2);
 
 print_r($set1->add("kukuriku"));
 
-
 print_r($set1->toString());
 //print_r($set2->toString());
 //print_r($set1->union($set2)->toString());
@@ -43,7 +42,7 @@ class Set {
             }
         }
     }
-
+//                                                      Így is lehet:
 //    public function __construct($elements) {
 //        foreach ($elements as $element) {
 //            $this->add($element);
