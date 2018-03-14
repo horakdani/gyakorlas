@@ -1,19 +1,15 @@
 <?php
 
-class BoldText extends PlainText {
+class BoldText extends TextDecorator {
 
-    protected $object;
 
-    public function __construct(PlainText $PlainText) {
-        $this->object = $PlainText;
-    }
 
     public function toMarkdown() {
-        return "**" . $this->object->toMarkdown() . "**";
+        return "**" . $this->decoratedText->toMarkdown() . "**";
     }
 
     public function toHtml() {
-        return "<strong>" . $this->object->toHtml() . "</strong>";
+        return "<strong>" . $this->decoratedText->toHtml() . "</strong>";
     }
 
 }

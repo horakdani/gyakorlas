@@ -1,19 +1,13 @@
 <?php
 
-class StrikeTroughText extends PlainText {
-
-    private $object;
-
-    public function __construct(PlainText $object) {
-        $this->object = $object;
-    }
+class StrikeTroughText extends TextDecorator {
 
     public function toMarkdown() {
-        return "~~" . $this->object->toMarkdown() . "~~";
+        return "~~" . $this->decoratedText->toMarkdown() . "~~";
     }
 
     public function toHtml() {
-        return "<strike>" . $this->object->toMarkdown() . "</strike>";
+        return "<strike>" . $this->decoratedText->toMarkdown() . "</strike>";
     }
 
 }

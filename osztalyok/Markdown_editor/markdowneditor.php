@@ -1,6 +1,7 @@
 <?php
 
 require 'PlainText.php';
+require 'TextDecorator.php';
 require 'Header.php';
 require 'BoldText.php';
 require 'ItalicsText.php';
