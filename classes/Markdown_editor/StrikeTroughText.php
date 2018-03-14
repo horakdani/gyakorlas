@@ -3,7 +3,7 @@
 class StrikeTroughText extends PlainText {
 
     public function toMarkdown() {
-        return "~~" . "$this->text" . "~~";
+        return "~~" . $this->text . "~~";
     }
 
     public function toHtml() {

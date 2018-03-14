@@ -12,4 +12,8 @@ class PlainText {
         return $this->text;
     }
 
+    public function toHtml() {
+        return "<p>" . $this->text . "</p>";
+    }
+
 }

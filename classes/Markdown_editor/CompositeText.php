@@ -1,8 +1,43 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+class CompositeText {
 
+    /**
+     *
+     * @var type PlainText
+     */
+    private $texts = [];
+
+    /**
+     * 
+     * @param type $object
+     */
+    public function add($object) {
+        $this->texts[] = $object;
+    }
+
+    /**
+     * 
+     * @return type String
+     */
+    public function toMarkdown() {
+        $kiir = "";
+        foreach ($this->texts as $value) {
+            $kiir .= $value->toMarkdown();
+        }
+        return $kiir;
+    }
+
+    /**
+     * 
+     * @return type String
+     */
+    public function toHtml() {
+        $kiir = "";
+        foreach ($this->texts as $value) {
+            $kiir .= $value->toHtml();
+        }
+        return $kiir;
+    }
+
+}

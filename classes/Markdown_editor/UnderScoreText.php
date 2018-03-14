@@ -3,7 +3,7 @@
 class UnderscoreText extends PlainText {
 
     public function toMarkdown() {
-        return "_" . "$this->text" . "_";
+        return "_" . $this->text . "_";
     }
 
     public function toHtml() {

@@ -2,14 +2,12 @@
 
 class BoldText extends PlainText {
 
-//    private $text;
-
-//    public function __construct($text) {
-//        $this->text = $text;
-//    }
-
     public function toMarkdown() {
         return "**" . $this->text . "**";
+    }
+
+    public function toHtml() {
+        return "<strong>" . $this->text . "</strong>";
     }
 
 }
