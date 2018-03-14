@@ -10,16 +10,16 @@ require 'CompositeText.php';
 
 
 $doc1 = new PlainText("Hello");
-$doc4 = new BoldText(new PlainText("World"));
+$doc2 = new BoldText(new PlainText("World"));
 
 $doc = new CompositeText();
 $doc->add($doc1);
-$doc->add($doc4);
+$doc->add($doc2);
 
 $doc = new UnderscoreText($doc);
 
 if (isset($argv[1]) && $argv[1] === "html") {
-    echo $doc->toHtml();
+    echo "\n" . $doc->toHtml() . "\n";
 } else {
-    echo $doc->toMarkdown();
+    echo "\n" . $doc->toMarkdown() . "\n";
 }
