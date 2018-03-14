@@ -2,12 +2,18 @@
 
 class ItalicsText extends PlainText {
 
+    private $object;
+
+    public function __construct(PlainText $object) {
+        $this->object = $object;
+    }
+
     public function toMarkdown() {
-        return "*" . $this->text . "*";
+        return "*" . $this->object->toMarkdown() . "*";
     }
 
     public function toHtml() {
-        return "<i>" . $this->text . "</i>";
+        return "<i>" . $this->object->toHtml() . "</i>";
     }
 
 }

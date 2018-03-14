@@ -1,12 +1,16 @@
 <?php
 
-class CompositeText {
+class CompositeText extends PlainText {
 
     /**
      *
      * @var type PlainText
      */
     private $texts = [];
+
+    public function __construct() {
+        
+    }
 
     /**
      * 
