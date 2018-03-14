@@ -8,18 +8,19 @@ require 'ItalicsText.php';
 require 'UnderScoreText.php';
 require 'StrikeTroughText.php';
 
-$proba = new CompositeText();
-$proba->add(new Header("Main Title"));
-$proba->add(new PlainText("hello world"));
-$proba->add(new BoldText("Lorem"));
-$proba->add(new ItalicsText("Ipsum"));
-$proba->add(new UnderscoreText("dolor"));
-$proba->add(new StrikeTroughText("sit amet"));
+$text = new CompositeText();
+$bold = new BoldText("World");
+$text->add(new StrikeTroughText("Hello" . $bold->toMarkdown()));
 
-echo "\n--------------------------------------------------------------Markdown:-------------------\n";
-echo $proba->toMarkdown();
-echo "\n----------------------------------------------------------------HTML:---------------------\n";
-echo $proba->toHtml();
-echo "\n------------------------------------------------------------------------------------------\n";
+//$text->add(new Header("Main Title"));
+//$text->add(new PlainText("hello world"));
+//$text->add(new BoldText("Lorem"));
+//$text->add(new ItalicsText("Ipsum"));
+//$text->add(new UnderscoreText("dolor"));
+//$text->add(new StrikeTroughText("sit amet"));
 
-print_r($proba);
+echo "\n--------------------------------------------------------------------\n\n";
+echo $text->toMarkdown();
+echo "\n\n--------------------------------------------------------------------\n\n";
+echo $text->toHtml();
+echo "\n\n--------------------------------------------------------------------\n";
