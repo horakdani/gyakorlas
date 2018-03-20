@@ -9,7 +9,6 @@ require 'UnderScoreText.php';
 require 'StrikeTroughText.php';
 require 'CompositeText.php';
 
-
 $doc1 = new PlainText("Hello");
 $doc2 = new BoldText(new PlainText("World"));
 
